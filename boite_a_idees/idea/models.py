@@ -4,8 +4,8 @@ from main.models import User
 
 class Idea(models.Model):
     titre = models.CharField(max_length=30,null=False,blank=False)
-    description = models.CharField(max_length=500,null=False,blank=False)
-    date = models.DateField(default=timezone.now())
+    description = models.TextField(max_length=500,null=False,blank=False)
+    date = models.DateTimeField(default=timezone.now())
     user = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     likes = models.IntegerField(default=0,null=True)
     dislikes = models.IntegerField(default=0,null=True)

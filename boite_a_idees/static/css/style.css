@@ -1,0 +1,155 @@
+
+
+.rouge{
+    color: red;
+}
+
+.btn-primary{
+    background-color: red;
+    border-color: red;
+}
+
+.btn-primary:hover{
+    background-color: white;
+    color: red;
+    border-color: red;
+}
+
+.btn-primary:focus{
+    background-color: white;
+    color: red;
+    border-color: red;
+}
+
+.btn-outline-primary{
+    border-color: red;
+    color: red;
+}
+
+.btn-outline-primary:hover{
+    background-color: red;
+    color: white;
+    border-color: red;
+}
+
+.btn-outline-primary:focus{
+    background-color: red;
+    color: white;
+    border-color: red;
+}
+
+body{
+    max-width: 1200px;
+    margin: auto;
+}
+
+.accueil{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+h1{
+    color: red;
+    padding: 50px;
+    text-align: center;
+}
+
+.accueil img{
+    border-radius: 50px;
+}
+
+.accueil p{
+    padding: 30px;
+    font-size: large;
+}
+
+
+.header p{
+    align-items: center;
+}
+
+#boutons-accueil{
+    padding: 30px;
+}
+
+#boutons-accueil button{
+    margin: 10px;
+}
+
+#idees{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 40px;
+}
+
+#idees h2,h2{
+    text-align: center;
+    color: brown;
+    padding: 20px;
+}
+
+#idees li,#toutes-idees li{
+    list-style: none;
+}
+
+#idees p,#toutes-idees{
+    font-size: large;
+    padding-left: 60px;
+}
+
+#toutes-idees p{
+    padding-left: 200px;
+}
+
+#idees a, #toutes-idees a{
+    color:darkslategrey;
+    font-weight: bold;
+    font-size: larger;
+}
+
+#boutons{
+    display: flex;
+    justify-content: space-around;
+    font-size: 50px;
+    margin: 100px;
+}
+
+#boutons button{
+    font-size: 50px;
+}
+
+#description{
+    border: solid black ;
+    border-radius: 10px;
+    border-width: 1px;
+    padding: 20px;
+    margin: 30px;
+    margin-bottom: 60px;
+}
+
+.lien-simple{
+    color: darkred;
+}
+
+#user{
+    font-size: larger;
+}
+
+.create-idea{
+    text-align: center;
+}
+
+main{
+    min-height: 750px;
+}
+
+.create-idea button{
+    margin-top: 60px;
+    font-size: large;
+}
+
+.nav-link .active{
+    color: black;
+}

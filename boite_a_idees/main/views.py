@@ -5,7 +5,8 @@ from django.views.generic import CreateView
 
 # Create your views here.
 def home_page(request):
-    return render(request, 'main/home_page.html')
+    user = request.user
+    return render(request, 'main/home_page.html',context={'user':user})
 
 
 

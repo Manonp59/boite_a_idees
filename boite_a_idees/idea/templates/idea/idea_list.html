@@ -1,14 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+<h1>Boîte à idées</h1>
+
+<div id="idees">
 <div class="container">
+    <h2>Les + récentes</h2>
     <ul>
-        {% for idea in idea_list %}
+        {% for idea in idea_list|dictsortreversed:'id'|slice:":5" %}
             <li>
-                <a href="/idea/idea_detail/{{idea.id}}">{{idea.titre}}</a>
-                Likes {{idea.likes}} Dislikes {{idea.dislikes}}
+                <p><a href="/idea/idea_detail/{{idea.id}}">{{idea.titre}}</a> - {{idea.user.username}} - 👍 {{idea.likes}} 👎 {{idea.dislikes}}</p>
             </li>
         {% endfor %}
     </ul>
+</div>
+
+<div class="container">
+    <h2>Les + populaires</h2>
+    <ul>
+        {% for idea in idea_list|dictsortreversed:'likes'|slice:":5" %}
+            <li>
+                <p><a href="/idea/idea_detail/{{idea.id}}">{{idea.titre}}</a> - {{idea.user.username}} - 👍 {{idea.likes}} 👎 {{idea.dislikes}}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+</div>
+<div id="toutes-idees">
+    <h2>Toutes les idées</h2>
+    {% for idea in idea_list %}
+            <li>
+                <p><a href="/idea/idea_detail/{{idea.id}}">{{idea.titre}}</a> - {{idea.user.username}} - 👍 {{idea.likes}} 👎 {{idea.dislikes}}</p>
+            </li>
+    {% endfor %}
 </div>
 {% endblock content %}

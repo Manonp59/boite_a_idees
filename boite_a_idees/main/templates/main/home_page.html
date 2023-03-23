@@ -1,1 +1,25 @@
-page d'accueil
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+<div class="accueil">
+    <h1>Bienvenue dans la boîte à idées !</h1>
+<figure>
+    <img src="{% static 'images/Boite_a_idee.jpg' %}" alt="image" width=400>
+</figure>
+{% if user.is_authenticated%}
+<div id= "boutons-accueil">
+    <a href="{% url 'idea-list' %}"><button type="button" class="btn btn-primary">Liste des idées</button></a>
+    <a href="{% url 'idea-create' %}"><button type="button" class="btn btn-primary">Soumettre une idée</button></a>
+</div>
+{% else %}
+<p>Pour proposer vos idées, visualiser celles des autres et voter pour vos préférées, merci de vous connecter !</p>
+<div class="col-md-3 text-end">
+    <a href="{% url 'login' %}"><button type="button" class="btn btn-outline-primary me-2">Se connecter</button></a>
+    <a href="{% url 'signup' %}"><button type="button" class="btn btn-primary">S'inscrire</button></a>
+</div>
+{% endif %}
+
+</div>
+
+{% endblock content %}

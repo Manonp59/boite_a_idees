@@ -2,11 +2,29 @@
 
 {% block content %}
 
-<div class="container">
+<h1>S'inscrire</h1>
+<div class="container create-idea">
     <form action="" method="post">
         {% csrf_token %}
-        {{form}}
-        <button type="submit" class="btn btn-primary">Submit</button>
+        {{ form.non_field_errors }}
+        <div class="fieldWrapper">
+            <p><label for="{{form.username.id_for_label}}">Nom d'utilisateur : </label></p>
+            <p>{{form.username}}</p>
+        </div>
+        <div class="fieldWrapper">
+            <p><label for="{{form.email.id_for_label}}">Adresse mail :</label></p>
+            <p>{{form.email}}</p>
+        </div>
+        <div class="fieldWrapper">
+            <p><label for="{{form.password1.id_for_label}}">Mot de passe :</label></p>
+            <p>{{form.password1}}</p>
+        </div>
+        <div class="fieldWrapper">
+            <p><label for="{{form.password2.id_for_label}}">Confirmation du mot de passe :</label></p>
+            <p>{{form.password2}}</p>
+        </div>
+
+        <button type="submit" class="btn btn-primary">S'inscrire</button>
     </form>
 </div>
 

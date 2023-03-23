@@ -4,33 +4,34 @@ from django.views.generic import ListView, DetailView, CreateView
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
 
-class IdeaListView(ListView):
+from .models import Idea, Likes,Dislikes
+
+
+class IdeaListView(LoginRequiredMixin,ListView):
     model = Idea
     template_name = "idea/idea_list.html"
     context_object_name = "idea_list"
 
-class IdeaDetailView(DetailView):
+class IdeaDetailView(LoginRequiredMixin, DetailView):
     model = Idea
     template_name = "idea/idea_detail.html"
     
 
-
 #LoginRequiredMixin remplace le décorateur @login_required
-class IdeaCreateView(CreateView, LoginRequiredMixin):
+class IdeaCreateView(LoginRequiredMixin,CreateView):
     model = Idea
     template_name = "idea/idea_create.html"
-    fields = "__all__"
+    fields = ['titre','description']
     # on peut aussi mettre fields= ['name','description'], c'est comme ça qu'on choisit quels champs on veut si on ne les veut pas tous
     success_url = reverse_lazy('idea-list')
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
-from django.urls import reverse
-from django.shortcuts import get_object_or_404
-from django.http import HttpResponseRedirect
-from django.contrib.auth.decorators import login_required
-
-from .models import Idea, Likes,Dislikes
 
 @login_required
 def like(request, pk):

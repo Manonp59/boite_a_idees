@@ -2,18 +2,23 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container details">
     <h1>{{idea.titre}}</h1>
-    <p>{{idea.description}}</p>
-    <p>{{idea.date}}</p>
-    <p>{{idea.like}}</p>
-    <p>{{idea.dislike}}</p>
+    <p id="user">Une idée de : {{idea.user.username}}</p>
+    <p>Le : {{idea.date|date:"d/m/Y"}}</p>
+    <p id="description">{{idea.description}}</p>
+    
+</div>
+<div id="boutons">
+    <span><a href="{% url 'like' idea.id %}"><button type="button" class="btn btn-outline-primary me-2">👍</button></a>
+    {{idea.likes}}</span>
+
+    <span><a href="{% url 'dislike' idea.id %}"><button type="button" class="btn btn-outline-primary me-2">👎</button></a>
+    {{idea.dislikes}}</span>
+
 </div>
 
-<a href="{% url 'like' idea.id %}">Like</a>
-<p>{{idea.likes}}</p>
+<a class="lien-simple" href="{% url 'idea-list' %}">← Retour à la boîte à idées</a>
 
-<a href="{% url 'dislike' idea.id %}">Dislike</a>
-<p>{{idea.dislikes}}</p>
 
 {% endblock content %}

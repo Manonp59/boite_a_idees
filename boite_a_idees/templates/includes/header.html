@@ -1,0 +1,35 @@
+{% load static %}
+
+{% url 'home' as url_home%}
+{% url 'idea-list' as url_idea_list %}
+{% url 'idea-create' as url_idea_create %}
+
+
+<div class="container header" id='header'>
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+        <figure>
+            <img href="{% static 'images/simplon.png' %}" width=50>
+        </figure>
+        
+
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="{{url_home}}" class="nav-link px-2 {% if request.path == url_home %}link-dark {% else %}link-secondary{% endif %}">Accueil</a></li>
+        <li><a href="{{url_idea_list}}" class="nav-link px-2 {% if request.path == url_idea_list %}link-dark {% else %}link-secondary{% endif %}">Idées</a></li>
+        <li><a href="{{url_idea_create}}" class="nav-link px-2 {% if request.path == url_idea_create %}link-dark {% else %}link-secondary{% endif %}">Soumettre une idée</a></li>
+      </ul>
+
+      {% if user.is_authenticated %}
+      <div>
+        <span class="nav-bar-text">Vous êtes connecté en tant que {{user.username}}</span>
+      <a href="{% url 'logout' %}?next={{request.path}}"><button type="button" class="btn btn-outline-primary me-2">Se déconnecter</button></a>
+      </div>
+      {% else %}
+      <div class="col-md-3 text-end">
+        <a href="{% url 'login' %}"><button type="button" class="btn btn-outline-primary me-2">Se connecter</button></a>
+        <a href="{% url 'signup' %}"><button type="button" class="btn btn-primary">S'inscrire</button></a>
+      </div>
+      {% endif %}
+      
+    </header>
+  </div>
+
