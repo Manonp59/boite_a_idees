@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1>{{idea.titre}}</h1>
+    <p>{{idea.description}}</p>
+    <p>{{idea.date}}</p>
+    <p>{{idea.like}}</p>
+    <p>{{idea.dislike}}</p>
+</div>
+
+<a href="{% url 'like' idea.id %}">Like</a>
+<p>{{idea.likes}}</p>
+
+<a href="{% url 'dislike' idea.id %}">Dislike</a>
+<p>{{idea.dislikes}}</p>
+
+{% endblock content %}

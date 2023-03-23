@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <ul>
+        {% for idea in idea_list %}
+            <li>
+                <a href="/idea/idea_detail/{{idea.id}}">{{idea.titre}}</a>
+                Likes {{idea.likes}} Dislikes {{idea.dislikes}}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}
