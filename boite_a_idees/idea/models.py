@@ -9,6 +9,9 @@ class Idea(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     likes = models.IntegerField(default=0,null=True)
     dislikes = models.IntegerField(default=0,null=True)
+    
+    def __str__(self) -> str:
+        return f"{self.titre} - {self.user}"
 
 class Likes(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_likes")
