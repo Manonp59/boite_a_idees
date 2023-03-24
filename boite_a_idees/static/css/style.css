@@ -116,7 +116,7 @@ h1{
     margin: 100px;
 }
 
-#boutons button{
+#boutons .btn{
     font-size: 50px;
 }
 

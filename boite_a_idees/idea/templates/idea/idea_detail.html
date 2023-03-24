@@ -10,13 +10,17 @@
     
 </div>
 <div id="boutons">
-    <span><a href="{% url 'like' idea.id %}"><button type="button" class="btn btn-outline-primary me-2">👍</button></a>
-    {{idea.likes}}</span>
+    <span>
+        <a href="{% url 'like' idea.id %}"><button type="button" class="btn {% if user_liked %}btn-success{% else %}btn-outline-primary{% endif %} me-2">👍</button></a> {{idea.likes}}
+    </span>
 
-    <span><a href="{% url 'dislike' idea.id %}"><button type="button" class="btn btn-outline-primary me-2">👎</button></a>
-    {{idea.dislikes}}</span>
-
+    <span>
+        <a href="{% url 'dislike' idea.id %}">
+        <button type="button" class="btn {% if user_disliked %}btn-danger{% else %}btn-outline-primary{% endif %} me-2">👎</button></a>
+        {{idea.dislikes}}
+    </span>
 </div>
+
 
 <a class="lien-simple" href="{% url 'idea-list' %}">← Retour à la boîte à idées</a>
 

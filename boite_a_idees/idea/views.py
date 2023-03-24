@@ -19,6 +19,14 @@ class IdeaDetailView(LoginRequiredMixin, DetailView):
     model = Idea
     template_name = "idea/idea_detail.html"
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.request.user
+        idea = self.get_object()
+        context['user_liked'] = idea.idea_likes.filter(user=user).exists()
+        context['user_disliked'] = idea.idea_dislikes.filter(user=user).exists()
+        return context
+
 
 #LoginRequiredMixin remplace le décorateur @login_required
 class IdeaCreateView(LoginRequiredMixin,CreateView):
